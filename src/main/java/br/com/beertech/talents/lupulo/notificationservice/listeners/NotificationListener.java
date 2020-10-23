@@ -18,9 +18,7 @@ public class NotificationListener {
 
     @RabbitListener(queues = NotificationListener.EMAIL_NOTIFICATIION_QUEUE)
     public void handleMessage(final CustomMessage message) {
-        log.info(message.toString());
         mailNotificationService.sendMail(message.getEmail(), message.getSubject(), message.getText());
-
     }
 }
 
